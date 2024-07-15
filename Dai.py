@@ -5,7 +5,7 @@ import time
 import requests
 import json
 
-url = "https://api.dai.creath.com.br/v1/chats"
+url = "https://api.dai.tec.br/v1/chats"
 
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container, initial_text=""):
