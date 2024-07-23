@@ -69,7 +69,7 @@ if prompt := st.chat_input():
         
         
         for text in list(resposta):
-            stream_handler.on_llm_new_token(text)
+            stream_handler.on_llm_new_token(text.replace("$", "\$"))
             time.sleep(0.01)
         
         st.session_state.messages.append(ChatMessage(role="assistant", content=resposta))
