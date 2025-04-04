@@ -19,7 +19,6 @@ class StreamHandler(BaseCallbackHandler):
 # Pega chae de API
 with st.sidebar:
     dai_api_key = st.text_input("Dai API Key", type="password")
-    dai_api_name = st.text_input("Nome do Cliente")
     dai_api_id = st.text_input("Numero do Cliente")
 
 # Inicia a primeira msg quando starta o chat
@@ -46,7 +45,7 @@ if prompt := st.chat_input():
 
         ## MAAAAANDA MSG PRA DAI        
         payload = json.dumps({
-            "username": dai_api_name,
+            "username": "Playground",
             "message": prompt,
             "messageServiceId": dai_api_id
         })
