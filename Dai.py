@@ -56,7 +56,13 @@ if prompt := st.chat_input():
         
         response = requests.request("POST", url, headers=headers, data=payload)
         if response.status_code == 200:
-            resposta = json.loads(response.text)['response']
+            jsonResponse = json.loads(response.text)
+            resposta = jsonResponse['response']
+            for element in jsonResponse['commands']:
+                if element['params'] is None:
+                    resposta += ' \<CMD:' + element['name'] + '\> '
+                else:
+                    resposta += ' \<CMD:' + element['name'] + ':' + element['params'] + '\> '
         else:
             resposta = "Ops, algo deu errado:" + response.text 
             
