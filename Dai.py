@@ -1,5 +1,5 @@
-from langchain.callbacks.base import BaseCallbackHandler
-from langchain.schema import ChatMessage
+from langchain_core.callbacks.base import BaseCallbackHandler
+from langchain_core.messages.chat import ChatMessage
 import streamlit as st
 import time
 import requests
