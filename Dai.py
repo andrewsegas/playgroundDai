@@ -57,7 +57,7 @@ if prompt := st.chat_input():
         response = requests.request("POST", url, headers=headers, data=payload)
         if response.status_code == 200:
             jsonResponse = json.loads(response.text)
-            if jsonResponse['conversationMode'] == "CHAT":
+            if 'conversationMode' not in jsonResponse or jsonResponse['conversationMode'] == "CHAT":
                 resposta = jsonResponse['response']
                 for element in jsonResponse['commands']:
                     if element['params'] is None:
@@ -83,4 +83,5 @@ if prompt := st.chat_input():
             time.sleep(0.01)
         
         st.session_state.messages.append(ChatMessage(role="assistant", content=resposta))
+
 
